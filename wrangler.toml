@@ -11,17 +11,14 @@ MAX_LOG_SIZE = "10485760"  # 10MB
 RATE_LIMIT_PER_MINUTE = "1000"
 RETENTION_DAYS = "30"
 
-# KV namespace for log storage
+# KV namespace for log storage (fast access, temporary storage)
 [[kv_namespaces]]
 binding = "LOGS_KV"
-id = "logs-kv-dev"
-preview_id = "logs-kv-dev-preview"
+id = "REPLACE_WITH_ACTUAL_KV_ID"
+preview_id = "REPLACE_WITH_ACTUAL_PREVIEW_ID"
 
-# D1 database for complex queries and analytics
-[[d1_databases]]
-binding = "LOGS_DB"
-database_name = "logs-db-dev"
-database_id = "logs-db-dev-id"
+# NOTE: Using existing data-access service instead of D1
+# Complex queries and persistent storage will be handled via DATA_SERVICE_URL
 
 # Staging environment
 [env.staging]
@@ -37,12 +34,8 @@ RETENTION_DAYS = "90"
 
 [[env.staging.kv_namespaces]]
 binding = "LOGS_KV"
-id = "logs-kv-staging"
-
-[[env.staging.d1_databases]]
-binding = "LOGS_DB"
-database_name = "logs-db-staging"
-database_id = "logs-db-staging-id"
+id = "REPLACE_WITH_ACTUAL_STAGING_KV_ID"
+preview_id = "REPLACE_WITH_ACTUAL_STAGING_PREVIEW_ID"
 
 # Production environment
 [env.production]
@@ -58,9 +51,5 @@ RETENTION_DAYS = "365"
 
 [[env.production.kv_namespaces]]
 binding = "LOGS_KV"
-id = "logs-kv-production"
-
-[[env.production.d1_databases]]
-binding = "LOGS_DB"
-database_name = "logs-db-production"
-database_id = "logs-db-production-id"
+id = "REPLACE_WITH_ACTUAL_PRODUCTION_KV_ID"
+preview_id = "REPLACE_WITH_ACTUAL_PRODUCTION_PREVIEW_ID"
